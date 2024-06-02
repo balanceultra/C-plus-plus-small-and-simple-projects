@@ -1,0 +1,27 @@
+#include<iostream>
+
+#include<ctime>
+int main(){
+    int guesses;
+    int number;
+    int answer;
+    std::cout<<"@@@@ number guessing game @@@@";
+    srand(time(NULL));
+    number=(rand()%100)+1;
+    do{
+        std::cout<<"take a guess between 1 to 100"<<"\n";
+        std::cin>>answer;
+        guesses++;
+        if(answer<=number){
+            std::cout<<"too low"<<"\n";
+        }
+        if(answer>=number){
+            std::cout<<"too high"<<"\n";
+        }
+        else if(answer==number){
+            std::cout<<"correct answer horray! number of tries: "<< guesses <<"\n";
+        }
+    }while(answer!=number);
+     std::cout<<"********************************************************"<<"\n";
+     return 0;
+}
