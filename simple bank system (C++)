@@ -1,0 +1,57 @@
+void showbalance(int balance);
+void deposit(int &balance);
+void withdraw(int &balance);
+
+int main() {
+    int balance = 0;
+    char option;
+    
+    std::cout << "    Welcome to our bank   \n";
+    std::cout << "   What would you like to do today?   \n";
+    std::cout << "   Press (d) for deposit, (w) to withdraw, (s) to show balance, (e) to exit out of the program\n";
+
+    do {
+        std::cin >> option;
+        
+        if (option == 'd' || option == 'D') {
+            deposit(balance);
+            showbalance(balance);
+        } else if (option == 'w' || option == 'W') {
+            withdraw(balance);
+            showbalance(balance);
+        } else if (option == 's' || option == 'S') {
+            showbalance(balance);
+        } else if (option == 'e' || option == 'E') {
+            std::cout << "    Thank you for visiting our bank!   \n";
+        } else {
+            std::cout << "Invalid input\n";
+        }
+        
+    } while (option != 'e' && option != 'E');
+
+    return 0;
+}
+
+void showbalance(int balance) {
+    std::cout << "Your current balance is: " << balance << std::endl;
+}
+
+void deposit(int &balance) {
+    int amount;
+    std::cout << "Please enter the amount you want to deposit: ";
+    std::cin >> amount;
+    balance += amount;
+    std::cout << "Amount deposited.\n";
+}
+
+void withdraw(int &balance) {
+    int amount;
+    std::cout << "Please enter the amount you want to withdraw: ";
+    std::cin >> amount;
+    if (amount <= balance) {
+        balance -= amount;
+        std::cout << "Amount withdrawn.\n";
+    } else {
+        std::cout << "Insufficient balance.\n";
+    }
+}
