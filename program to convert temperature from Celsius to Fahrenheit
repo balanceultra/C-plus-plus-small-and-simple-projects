@@ -1,0 +1,53 @@
+#include <iostream>
+#include <limits>
+
+void clearInput() {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
+int main() {
+    char temp;
+    double value, converted;
+
+    std::cout << "****** This is a temperature conversion code ******\n";
+
+    while (true) {
+        std::cout << "Enter either F or C to be the converted unit (or Q to quit): ";
+        std::cin >> temp;
+
+        if (temp == 'Q' || temp == 'q') {
+            std::cout << "Exiting the program. Thank you!\n";
+            break;
+        }
+
+        if (temp == 'f' || temp == 'F') {
+            std::cout << "Enter the temperature in Celsius: ";
+            std::cin >> value;
+            if (std::cin.fail()) {
+                std::cout << "Invalid input. Please enter a number.\n";
+                clearInput();
+                continue;
+            }
+            converted = (value * 1.8) + 32.0;
+            std::cout << "Temperature in Fahrenheit: " << converted << "\n";
+        }
+        else if (temp == 'C' || temp == 'c') {
+            std::cout << "Enter the temperature in Fahrenheit: ";
+            std::cin >> value;
+            if (std::cin.fail()) {
+                std::cout << "Invalid input. Please enter a number.\n";
+                clearInput();
+                continue;
+            }
+            converted = (value - 32.0) / 1.8;
+            std::cout << "Temperature in Celsius: " << converted << "\n";
+        }
+        else {
+            std::cout << "Enter only C, F, or Q to quit.\n";
+        }
+        std::cout << "###############################################\n";
+    }
+
+    return 0;
+}
