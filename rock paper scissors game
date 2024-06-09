@@ -1,0 +1,85 @@
+#include <iostream>
+void showchoice(char choice);
+void showcompchoice(char compchoice);
+char compchoice();
+void winner(char choice,char comp);
+int main(){
+    char choice;
+    std::cout<<":::::::: this is a rock paper scissors game :::::::: \n";
+    std::cout<<"you can choose from rock(r),paper(p) or scissors(s): \n";
+    std::cout<<"please input your choice\n";
+    std::cin>>choice;
+    std::cout<<"your choice is:: ";
+    showchoice(choice);
+    char comp=compchoice();
+    std::cout<<"computer's choice is:: ";
+    showcompchoice(comp);
+    winner(choice,comp);
+    return 0;
+    
+
+}
+void showchoice(char choice){
+    switch(choice){
+        case 'r':std::cout<<"rock\n";
+            break;
+        case 'p':std::cout<<"paper\n";
+            break;
+        case 's':std::cout<<"scissors\n";
+            break;
+    }
+}
+void showcompchoice(char comp){
+    switch(comp){
+        case 'r':std::cout<<"rock\n";
+            break;
+        case 'p':std::cout<<"paper\n";
+            break;
+        case 's':std::cout<<"scissors\n";
+            break;
+    } 
+}
+char compchoice(){
+    int num;
+    srand(time(0));
+    num=rand()%3+1;
+    switch(num){
+        case 1:return 'r';
+        case 2:return 'p';
+        case 3:return 's';
+    }
+}
+
+void winner(char choice, char comp) {
+    switch (choice) {
+        case 'r':
+            if (comp == 'r') {
+                std::cout << "You have tied!" << std::endl;
+            } else if (comp == 's') {
+                std::cout << "You won!!!" << std::endl;
+            } else {
+                std::cout << "You lost...." << std::endl;
+            }
+            break;
+        case 's':
+            if (comp == 's') {
+                std::cout << "You have tied!" << std::endl;
+            } else if (comp == 'p') {
+                std::cout << "You won!!!" << std::endl;
+            } else {
+                std::cout << "You lost...." << std::endl;
+            }
+            break;
+        case 'p':
+            if (comp == 'p') {
+                std::cout << "You have tied!" << std::endl;
+            } else if (comp == 'r') {
+                std::cout << "You won!!!" << std::endl;
+            } else {
+                std::cout << "You lost...." << std::endl;
+            }
+            break;
+        default:
+            std::cout << "Invalid choice!" << std::endl;
+    }
+}
